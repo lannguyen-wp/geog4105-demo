@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GEOG 4105 – Geospatial Web Programming: Course Outline</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin: 1em; background: #f4f7fa; }
+    .container { width: 70%; margin: 0 auto; }
+    .course-header {
+      background: linear-gradient(90deg, #e3eaf2 0%, #f4f7fa 100%);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px #e3eaf2;
+      padding: 1em 1.5em 0.8em 1.5em;
+      margin-bottom: 1.2em;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .course-title {
+      font-size: 2em;
+      font-weight: bold;
+      color: #204060;
+      margin-bottom: 0.2em;
+      letter-spacing: 1px;
+    }
+    .course-meta {
+      font-size: 1.08em;
+      color: #2a4d69;
+      margin-bottom: 0.1em;
+    }
+    details.section {
+      margin-bottom: 1.2em;
+    }
+    .section {
+      margin-bottom: 1.2em;
+    }
+    h1, h2, h3 { color: #2a4d69; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1.2em;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px #e3eaf2;
+    }
+    th, td { border: 1px solid #e3eaf2; padding: 10px 12px; text-align: left; }
+    th { background: #2a4d69; color: #fff; font-weight: 600; }
+    tr:nth-child(even) { background: #f6f8fb; }
+    tr:hover { background: #eaf3fa; }
+    ul { margin-top: 0; }
+    .objectives-list, .outcomes-list {
+      margin-left: 1.5em;
+      background: #f6f8fb;
+      border-radius: 4px;
+      padding: 0.7em 1em;
+      margin-bottom: 1em;
+    }
+    .small { font-size: 0.95em; color: #555; }
+    details {
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 2px 8px #e3eaf2;
+      transition: box-shadow 0.2s;
+      border: 1px solid #e3eaf2;
+    }
+    details[open] { box-shadow: 0 4px 16px #d0dbe8; }
+    summary {
+      font-size: 1.18em;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0.7em 1.2em 0.7em 2em;
+      outline: none;
+      position: relative;
+      background: linear-gradient(90deg, #e3eaf2 0%, #f4f7fa 100%);
+      border-radius: 6px 6px 0 0;
+      transition: background 0.2s;
+      user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::marker { display: none; font-size: 0; color: transparent; }
+    summary:hover, summary:focus { background: #d0dbe8; }
+    details[open] summary { border-bottom: 1px solid #e3eaf2; }
+    details > *:not(summary) { padding: 0 1.2em 1em 1.2em; }
+    summary::before {
+      content: "▶";
+      color: #2a4d69;
+      font-size: 1em;
+      position: absolute;
+      left: 0.7em;
+      top: 50%;
+      transform: translateY(-50%) rotate(0deg);
+      transition: transform 0.2s;
+    }
+    details[open] summary::before {
+      content: "▼";
+      transform: translateY(-50%) rotate(0deg);
+    }
+    @media (max-width: 900px) {
+      .container { width: 98%; }
+      table, th, td { font-size: 0.98em; }
+      details > *:not(summary) { padding: 0 0.7em 1em 0.7em; }
+      summary { padding: 0.7em 0.7em 0.7em 2em; }
+    }
+    @media (max-width: 600px) {
+      .container { width: 100%; margin: 0; padding: 0; }
+      table, th, td { font-size: 0.93em; }
+      summary { font-size: 1em; }
+      details > *:not(summary) { padding: 0 0.3em 1em 0.3em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="course-header">
+      <div class="course-title">GEOG 4105 – Geospatial Web Programming</div>
+      <div class="course-meta">Duration: 13 weeks</div>
+      <div class="course-meta">Format: 3 hours lecture + 3 hours lab per week</div>
+      <div class="course-meta">Semester: Winter 2026</div>
+    </header>
+
+    <details class="section" open>
+      <summary>Course Description</summary>
+      <p>
+        This course prepares students for real-world web GIS development using modern, employer-relevant tools and practices. Students will learn to build interactive, scalable, and responsive geospatial web applications using JavaScript, Python, RESTful APIs, cloud services, and open-source libraries. Emphasis is placed on the design and implementation of web GIS systems that integrate client-side and server-side components, support user interaction, and follow professional standards in UI/UX and web cartography. This course offers students a strong opportunity to develop a portfolio-quality project showcasing full-stack geospatial web development skills applicable to careers in GIS, environmental monitoring, and data-driven digital solutions.
+      </p>
+    </details>
+
+    <details class="section">
+      <summary>Course Objectives &amp; Program Alignment</summary>
+      <ul class="objectives-list">
+        <li>Work with modern web GIS technologies and frameworks</li>
+        <li>Integrate spatial data into web-based, interactive applications</li>
+        <li>Apply data science and GIS programming skills to build usable tools</li>
+        <li>Strengthen career readiness through a publishable, project-based outcome</li>
+      </ul>
+      <h2>Learning Outcomes</h2>
+      <ol class="outcomes-list">
+        <li>Build fully functional, mobile-friendly geospatial web apps</li>
+        <li>Design and style custom basemaps using Mapbox Studio</li>
+        <li>Develop and consume REST APIs using Flask and JavaScript</li>
+        <li>Apply UI/UX and web cartography principles to map design</li>
+        <li>Plan, wireframe, and scope user-focused GIS applications</li>
+        <li>Deploy and showcase projects using cloud platforms</li>
+        <li>Integrate skills from earlier courses into professional-quality applications</li>
+        <li>Prepare a portfolio-ready project aligned with job roles in web GIS and spatial data science</li>
+      </ol>
+    </details>
+
+    <details class="section">
+      <summary>Course Progression Roadmap</summary>
+      <table>
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>Focus Area</th>
+            <th>Learning Outcomes Achieved</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Weeks 1–2</td>
+            <td>Frontend Setup &amp; Mapping Foundations</td>
+            <td>LO#1, LO#7</td>
+          </tr>
+          <tr>
+            <td>Weeks 3–5</td>
+            <td>JavaScript Programming &amp; Web Cartography</td>
+            <td>LO#1, LO#2, LO#4</td>
+          </tr>
+          <tr>
+            <td>Weeks 6–7</td>
+            <td>Backend Development &amp; Data Services</td>
+            <td>LO#3, LO#7</td>
+          </tr>
+          <tr>
+            <td>Weeks 8–9</td>
+            <td>Responsive UI &amp; Live Data Dashboards</td>
+            <td>LO#4, LO#5</td>
+          </tr>
+          <tr>
+            <td>Week 10</td>
+            <td>Cloud Deployment &amp; Hosting</td>
+            <td>LO#6</td>
+          </tr>
+          <tr>
+            <td>Week 11</td>
+            <td>Project Planning &amp; Application Design</td>
+            <td>LO#5, LO#7</td>
+          </tr>
+          <tr>
+            <td>Weeks 12–13</td>
+            <td>Project Development &amp; Professional Presentation</td>
+            <td>LO#1–8</td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="section">
+      <summary>Weekly Topics, Labs &amp; Program Alignment</summary>
+      <table>
+        <thead>
+          <tr>
+            <th>Week</th>
+            <th>Lecture Topic</th>
+            <th>Lab Focus / Assignment</th>
+            <th>Alignment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Introduction to Web GIS &amp; Career Use Cases</td>
+            <td>Setup: GitHub, VS Code, Mapbox Account; Intro to Leaflet</td>
+            <td>Orientation to web GIS stack; builds on GEOG 2553 and DATA 2402. Introduces project goals and workflow</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Modern Web GIS Architecture &amp; Web Mapping Libraries</td>
+            <td>Build basic Leaflet map; Add markers and popups</td>
+            <td>Introduces client-side mapping; extends GEOG 2105</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>JavaScript for GIS Developers</td>
+            <td>JS syntax, fetch API, DOM manipulation</td>
+            <td>Builds coding logic from DATA 2402; prepares for data-driven interactivity</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Leaflet + GeoJSON + User Interaction</td>
+            <td>Load external GeoJSON; interactive filters</td>
+            <td>Builds from GEOG 2553; supports DATA 3463 on real-time integration</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Web Map Styling with Mapbox Studio</td>
+            <td>Create/use custom basemap in Leaflet</td>
+            <td>Complements DATA 3453; focuses on design and cartography</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Python Flask for Web GIS APIs</td>
+            <td>Build backend to serve GeoJSON</td>
+            <td>Extends Python use from DATA 2402; introduces API structure</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>REST APIs &amp; Spatial Data Formats</td>
+            <td>Consume real APIs; serve local spatial data</td>
+            <td>Aligns with GEOG 4553; teaches distributed spatial data sharing</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Mobile-first &amp; Responsive Design</td>
+            <td>Build responsive map UI with Bootstrap</td>
+            <td>Focuses on accessibility, dashboard and mobile interface</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Dashboards &amp; Data-Driven Maps</td>
+            <td>Display real-time stats and map integration</td>
+            <td>Bridges to DATA 3453; emphasizes storytelling with live data</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Cloud &amp; Serverless Deployment</td>
+            <td>Deploy app online (Render, GitHub Pages)</td>
+            <td>Teaches devops basics and final deployment techniques</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>Project Planning &amp; UI/UX Design</td>
+            <td>Project goals, mockups, wireframes</td>
+            <td>Scaffolds student projects; encourages design thinking</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>Final Project Workshop</td>
+            <td>Develop full-stack GIS web application</td>
+            <td>Consolidates frontend, backend, data, and design work</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>Final Project Presentation &amp; Feedback</td>
+            <td>Student demos to peers and guests</td>
+            <td>Emphasizes professional presentation and review cycle</td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="section">
+      <summary>Tools &amp; Technologies</summary>
+      <ul>
+        <li><strong>Frontend:</strong> HTML, CSS, JavaScript, Leaflet, Mapbox Studio, Bootstrap</li>
+        <li><strong>Backend:</strong> Python, Flask, GeoJSON, REST APIs</li>
+        <li><strong>Dev Tools:</strong> GitHub, VS Code, Render (or Replit/Glitch for beginners)</li>
+        <li><strong>Optional Integration:</strong> PostgreSQL/PostGIS or NoSQL (conceptual overview only)</li>
+      </ul>
+    </details>
+
+    <details class="section">
+      <summary>Assessments</summary>
+      <table>
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Weekly Labs (10 total)</td>
+            <td>40%</td>
+          </tr>
+          <tr>
+            <td>Midterm Coding Challenge</td>
+            <td>15%</td>
+          </tr>
+          <tr>
+            <td>Final Project (Web GIS App)</td>
+            <td>35%</td>
+          </tr>
+          <tr>
+            <td>Participation &amp; Peer Review</td>
+            <td>10%</td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+  </div>
+</body>
+</html>
