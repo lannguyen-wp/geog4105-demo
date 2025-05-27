@@ -52,22 +52,49 @@
       font-weight: bold;
       letter-spacing: 0.5px;
     }
-    .slide-content { font-size: 1.08em; color: #2a4d69; }
-    .slide ul, .slide ol {
+    .slide-content {
+      font-size: 1.08em;
+      color: #2a4d69;
+      margin-left: 2rem;
+      margin-top: 1rem;
+    }
+    .slide-content ul,
+    .slide-content ol {
       margin-top: 0.3em;
       margin-bottom: 0.3em;
       padding-left: 1.2em;
       background: #f6f8fb;
       border-radius: 4px;
       padding: 0.7em 1em;
+      list-style-position: inside;
     }
-    .slide pre {
+    .slide-content p {
+      margin-top: 0.7em;
+      margin-bottom: 0.7em;
+    }
+    .slide-content img {
+      max-width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px #e3eaf2;
+      background: #fff;
+    }
+    .slide-content code {
       background: #f6f8fb;
       border-radius: 4px;
-      padding: 0.7em;
+      padding: 0.2em 0.4em;
+      font-size: 1em;
+      border: 1px solid #e3eaf2;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+    }
+    .slide-content .code-block {
+      display: block;
+      background: #f5f5f5;
+      padding: 1em;
+      border-radius: 6px;
+      margin-top: 1em;
+      font-family: 'Fira Mono', 'Consolas', monospace;
       font-size: 1em;
       overflow-x: auto;
-      margin: 0.7em 0;
       border: 1px solid #e3eaf2;
     }
     .nav-bar {
@@ -127,329 +154,336 @@
     </header>
     <div class="slide-container">
       <!-- Slide 1 -->
-        <section class="slide active">
-            <div class="slide-title">From Code to Map: Using JavaScript to Power Interactive Web GIS</div>
-            <div class="slide-content" style="margin-left: 2rem; margin-top: 1rem;">
-            <strong>Course:</strong> GEOG 4105 - Geospatial Web Programming<br>
-            <strong>Presenter:</strong> Lan Nguyen <br>
-            <strong>Duration:</strong> 25-minute Sample Lecture
-            </div>
-        </section>
+      <section class="slide active">
+        <div class="slide-title">From Code to Map: Using JavaScript to Power Interactive Web GIS</div>
+        <div class="slide-content">
+          <strong>Course:</strong> GEOG 4105 - Geospatial Web Programming<br>
+          <strong>Presenter:</strong> Lan Nguyen<br>
+          <strong>Duration:</strong> 25-minute Sample Lecture
+        </div>
+      </section>
       <!-- Slide 2 -->
-        <section class="slide">
+      <section class="slide">
         <div class="slide-title">Learning Objectives</div>
-        <div class="slide-content" style="margin-left: 2rem;">
-            <ul>
+        <div class="slide-content">
+          <ul>
             <li><strong>Understand how JavaScript is used in modern web GIS:</strong><br>
-                Learn why JavaScript is the core language powering client-side map interactivity, and how it fits into the broader geospatial web application stack.
-            </li><br>
+              Learn why JavaScript is the core language powering client-side map interactivity, and how it fits into the broader geospatial web application stack.
+            </li>
             <li><strong>Learn core JavaScript concepts relevant to GIS:</strong><br>
-                Get comfortable with JavaScript syntax, functions, events, and DOM manipulation — all essential for building responsive maps and interactive user experiences.
-            </li><br>
+              Get comfortable with JavaScript syntax, functions, events, and DOM manipulation — all essential for building responsive maps and interactive user experiences.
+            </li>
             <li><strong>Load and visualize GeoJSON data on a web map:</strong><br>
-                Use JavaScript’s fetch API and Leaflet to dynamically load spatial data in GeoJSON format and render it on a map.
-            </li><br>
+              Use JavaScript’s fetch API and Leaflet to dynamically load spatial data in GeoJSON format and render it on a map.
+            </li>
             <li><strong>Trigger map interactions using JavaScript events:</strong><br>
-                Build user-driven features like popups, tooltips, and zoom events by binding JavaScript actions to map elements.
+              Build user-driven features like popups, tooltips, and zoom events by binding JavaScript actions to map elements.
             </li>
-            </ul>
+          </ul>
         </div>
-        </section>
+      </section>
       <!-- Slide 3 -->
-        <section class="slide">
+      <section class="slide">
         <div class="slide-title">Why JavaScript for GIS?</div>
-        <div class="slide-content" style="margin-left: 2rem;">
-            <ul>
+        <div class="slide-content">
+          <ul>
             <li><strong>Primary language for interactive web mapping:</strong><br>
-                JavaScript runs directly in the browser and controls map behavior, interactions, and updates in real-time.
-            </li><br>
-            <li><strong>Used in leading mapping libraries:</strong><br>
-                Libraries like Leaflet, Mapbox GL JS, and OpenLayers are all JavaScript-based — powering most modern interactive maps online.
-            </li><br>
-            <li><strong>Supports dynamic data and real-time user input:</strong><br>
-                JavaScript can fetch live data (e.g., traffic feeds, weather layers), respond to clicks or gestures, and update the map instantly.
-            </li><br>
-            <li><strong>Essential for GIS developers and spatial app builders:</strong><br>
-                Whether you're building dashboards, story maps, or spatial analysis tools — JavaScript is the language employers expect you to know.
+              JavaScript runs directly in the browser and controls map behavior, interactions, and updates in real-time.
             </li>
-            </ul>
+            <li><strong>Used in leading mapping libraries:</strong><br>
+              Libraries like Leaflet, Mapbox GL JS, and OpenLayers are all JavaScript-based — powering most modern interactive maps online.
+            </li>
+            <li><strong>Supports dynamic data and real-time user input:</strong><br>
+              JavaScript can fetch live data (e.g., traffic feeds, weather layers), respond to clicks or gestures, and update the map instantly.
+            </li>
+            <li><strong>Essential for GIS developers and spatial app builders:</strong><br>
+              Whether you're building dashboards, story maps, or spatial analysis tools — JavaScript is the language employers expect you to know.
+            </li>
+          </ul>
         </div>
-        </section>
+      </section>
       <!-- Slide 4 -->
-        <section class="slide">
+      <section class="slide">
         <div class="slide-title">JavaScript in a Web Map Stack</div>
-        <div class="slide-content" style="margin-left: 2rem;">
-            <ul>
-            <li><strong>Frontend:</strong> HTML for structure, CSS for styling, JavaScript for behavior and interactivity.</li><br>
-            <li><strong>Map Library:</strong> Leaflet.js provides a JavaScript framework for map layers, interactions, and controls.</li><br>
-            <li><strong>Data Format:</strong> GeoJSON is used to store and transfer spatial vector data (points, lines, polygons).</li><br>
+        <div class="slide-content">
+          <ul>
+            <li style="position:relative;">
+              <strong>Frontend:</strong>
+              <span
+                style="text-decoration:underline; color:#204060; cursor:pointer; position:relative;"
+                onmouseover="document.getElementById('html-img').style.display='block';"
+                onmouseout="document.getElementById('html-img').style.display='none';"
+              >HTML</span> for structure, CSS for styling, JavaScript for behavior and interactivity.
+              <img
+                id="html-img"
+                src="html.png"
+                alt="HTML Example"
+                style="display:none; position:absolute; left:0; top:2em; max-width:1000px; border-radius:6px; box-shadow:0 2px 8px #e3eaf2; background:#fff; z-index:10;"
+              >
+            </li>
+            <li><strong>Map Library:</strong> Leaflet.js provides a JavaScript framework for map layers, interactions, and controls.</li>
+            <li><strong>Data Format:</strong> GeoJSON is used to store and transfer spatial vector data (points, lines, polygons).</li>
             <li><strong>Backend (optional):</strong> A server or API, such as Flask in Python, can serve GeoJSON or connect to databases.</li>
-            </ul>
-            <div style="text-align:center; margin-top:1.5em;">
-              <img src="web-GIS-architecture-diagram.webp" alt="Web GIS Architecture Diagram" style="max-width:50%; border-radius:6px; box-shadow:0 2px 8px #e3eaf2;">
-              <div style="font-size:0.95em; color:#555; margin-top:0.5em;">Web GIS Architecture Diagram</div>
-            </div>
+          </ul>
+          <div style="text-align:center; margin-top:1.5em;">
+            <img src="web-GIS-architecture-diagram.webp" alt="Web GIS Architecture Diagram" style="max-width:50%;">
+            <div style="font-size:0.95em; color:#555; margin-top:0.5em;">Web GIS Architecture Diagram</div>
+          </div>
         </div>
-        </section>
+      </section>
       <!-- Slide 5 -->
       <section class="slide">
         <div class="slide-title">JavaScript Building Blocks</div>
-        <div class="slide-content" style="margin-left: 2rem;">
-            <ul>
+        <div class="slide-content">
+          <ul>
             <li><strong>Variables:</strong> Use <code>let</code> or <code>const</code> to store values like coordinates or map options.<br>
-                <code>const zoomLevel = 13;</code><br>
-                <code>let center = [51.05, -114.07];</code>
-            </li><br>
-            <li><strong>Functions:</strong> Reusable blocks of logic that perform specific tasks.<br>
-                <code>function zoomToFeature(e) { map.fitBounds(e.target.getBounds()); }</code>
-            </li><br>
-            <li><strong>DOM Manipulation:</strong> Change HTML content or react to elements using JavaScript.<br>
-                <code>document.getElementById('map').style.border = '2px solid green';</code>
-            </li><br>
-            <li><strong>Events:</strong> Respond to user actions like clicks or mouseovers.<br>
-                <code>map.on('click', function(e) { console.log(e.latlng); });</code>
+              <span class="code-block">const zoomLevel = 13;<br>let center = [51.05, -114.07];</span>
             </li>
-            </ul>
-            
+            <li><strong>Functions:</strong> Reusable blocks of logic that perform specific tasks.<br>
+              <span class="code-block">function zoomToFeature(e) { map.fitBounds(e.target.getBounds()); }</span>
+            </li>
+            <li><strong>DOM Manipulation:</strong> Change HTML content or react to elements using JavaScript.<br>
+              <em>DOM = Document Object Model: a tree-like structure that represents all elements on a webpage.</em><br>
+              <span class="code-block">document.getElementById('map').style.border = '2px solid green';</span>
+            </li>
+            <li><strong>Events:</strong> Respond to user actions like clicks or mouseovers.<br>
+              <span class="code-block">map.on('click', function(e) { console.log(e.latlng); });</span>
+            </li>
+          </ul>
         </div>
-        </section>
+      </section>
       <!-- Slide 6 -->
       <section class="slide">
         <div class="slide-title">Introducing Leaflet.js</div>
-        <div class="slide-content" style="margin-left: 2rem;">
-            <p>Leaflet is a powerful yet lightweight JavaScript library for mobile-friendly interactive maps.</p>
-            <ul>
+        <div class="slide-content">
+          <p>Leaflet is a powerful yet lightweight JavaScript library for mobile-friendly interactive maps.</p>
+          <ul>
             <li>Add tile layers, markers, popups, and vector overlays.</li>
             <li>Open source and widely used in web GIS apps.</li>
-            </ul>
-            <div style="background:#f5f5f5;padding:1em;border-radius:6px;margin-top:1em;">
-            <code>let map = L.map('map').setView([51.05, -114.07], 13);<br>
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);</code>
-            </div>
-            <!-- Demo button -->
-            <div style="margin-top:1.5em;">
-              <button onclick="window.open('demo1.html', '_blank')" style="background:#2a4d69;color:#fff;border:none;border-radius:4px;padding:0.5em 1.2em;font-size:1em;cursor:pointer;">
-                Open Demo1
-              </button>
-            </div>
+          </ul>
+          <span class="code-block">
+            let map = L.map('map').setView([51.05, -114.07], 13);<br>
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+          </span>
+          <div style="margin-top:1.5em;">
+            <button onclick="window.open('demo1.html', '_blank')" class="nav-btn">
+              Open Demo1
+            </button>
+          </div>
         </div>
-        </section>
+      </section>
       <!-- Slide 7 -->
       <section class="slide">
         <div class="slide-title">Adding Interactivity</div>
-        <div class="slide-content" style="margin-left: 2rem;">
-            <p>Add a clickable marker and display a popup:</p>
-            <div style="background:#f5f5f5;padding:1em;border-radius:6px;margin-top:1em;">
-            <code>
-                L.marker([51.05, -114.07])<br>
-                &nbsp;&nbsp;.addTo(map)<br>
-                &nbsp;&nbsp;.bindPopup('Downtown Calgary')<br>
-                &nbsp;&nbsp;.openPopup();
-            </code>
-            </div>
-            <p>You can try to alter the map your way:</p>
-            <ul style="margin-top:1em;">
-            
+        <div class="slide-content">
+          <p>Add a clickable marker and display a popup:</p>
+          <span class="code-block">
+            L.marker([51.05, -114.07])<br>
+            &nbsp;&nbsp;.addTo(map)<br>
+            &nbsp;&nbsp;.bindPopup('Downtown Calgary')<br>
+            &nbsp;&nbsp;.openPopup();
+          </span>
+          <p>You can try to alter the map your way:</p>
+          <ul>
             <li>Change the location (coordinates)</li>
             <li>Customize popup message or icon</li>
             <li>Try interactive options like closing popup on click</li>
-            </ul>
-            <!-- Demo button -->
-            <div style="margin-top:1.5em;">
-              <button onclick="window.open('demo2.html', '_blank')" style="background:#2a4d69;color:#fff;border:none;border-radius:4px;padding:0.5em 1.2em;font-size:1em;cursor:pointer;">
-                Open Demo2
-              </button>
-            </div>
+          </ul>
+          <div style="margin-top:1.5em;">
+            <button onclick="window.open('demo2.html', '_blank')" class="nav-btn">
+              Open Demo2
+            </button>
+          </div>
         </div>
-        </section>
+      </section>
       <!-- Slide 8 -->
       <section class="slide">
         <div class="slide-title">Loading GeoJSON Data</div>
-        <div class="slide-content" style="margin-left: 2rem;">
-            <p>Use <code>fetch()</code> to load spatial data dynamically from local or remote sources:</p>
-            <div style="background:#f5f5f5;padding:1em;border-radius:6px;margin-top:1em;">
-            <code>
-                fetch('Calgary_majorRoads.geojson')<br>
-                &nbsp;&nbsp;.then(res =&gt; res.json())<br>
-                &nbsp;&nbsp;.then(data =&gt; {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;L.geoJSON(data).addTo(map);<br>
-                &nbsp;&nbsp;});
-            </code>
-            </div>
-            <ul style="margin-top:1em;">
+        <div class="slide-content">
+          <p>Use <code>fetch()</code> to load spatial data dynamically from local or remote sources:</p>
+          <span class="code-block">
+            fetch('Calgary_majorRoads.geojson')<br>
+            &nbsp;&nbsp;.then(res =&gt; res.json())<br>
+            &nbsp;&nbsp;.then(data =&gt; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;L.geoJSON(data).addTo(map);<br>
+            &nbsp;&nbsp;});
+          </span>
+          <ul>
             <li>Works with points, lines, polygons</li>
             <li>Supports styles, popups, and events</li>
             <li>Can fetch local files or from a remote API</li>
-            </ul>
+          </ul>
         </div>
-        </section>
+      </section>
       <!-- Slide 9 -->
       <section class="slide">
         <div class="slide-title">Styling and Interacting with GeoJSON</div>
-        <div class="slide-content" style="margin-left: 2rem;">
-            <p>Leaflet lets you define how each feature looks and behaves:</p>
-            <ul>
+        <div class="slide-content">
+          <p>Leaflet lets you define how each feature looks and behaves:</p>
+          <ul>
             <li><code>style:</code> Function to style features based on attributes</li>
             <li><code>onEachFeature:</code> Attach popups, tooltips, events</li>
-            </ul>
-            <div style="background:#f7f7f7;padding:0.75em;border-radius:6px;margin-top:1em;">
-            <code>
-                fetch('Calgary_majorRoads.geojson')<br>
-                &nbsp;&nbsp;.then(res =&gt; res.json())<br>
-                &nbsp;&nbsp;.then(data =&gt; {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;L.geoJSON(data, {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;style: { color: 'blue', weight: 1 },<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onEachFeature: function (feature, layer) {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;layer.bindTooltip(feature.properties.name, {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sticky: true,<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction: 'top'<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;}).addTo(map);<br>
-                &nbsp;&nbsp;});
-            </code>
-            </div>
-            <!-- Demo button -->
-            <div style="margin-top:1.5em;">
-              <button onclick="window.open('demo3.html', '_blank')" style="background:#2a4d69;color:#fff;border:none;border-radius:4px;padding:0.5em 1.2em;font-size:1em;cursor:pointer;">
-                Open Demo3
-              </button>
-            </div>
+          </ul>
+          <span class="code-block">
+            fetch('Calgary_majorRoads.geojson')<br>
+            &nbsp;&nbsp;.then(res =&gt; res.json())<br>
+            &nbsp;&nbsp;.then(data =&gt; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;L.geoJSON(data, {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;style: { color: 'blue', weight: 1 },<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onEachFeature: function (feature, layer) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;layer.bindTooltip(feature.properties.name, {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sticky: true,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction: 'top'<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}).addTo(map);<br>
+            &nbsp;&nbsp;});
+          </span>
+          <div style="margin-top:1.5em;">
+            <button onclick="window.open('demo3.html', '_blank')" class="nav-btn">
+              Open Demo3
+            </button>
+          </div>
         </div>
-        </section>  
-        <!-- Slide 10 -->
-    <section class="slide">
-    <div class="slide-title">Debugging and Troubleshooting</div>
-    <div class="slide-content" style="margin-left: 2rem;">
-        <ul>
-        <li>
-            <strong>GeoJSON not loading?</strong><br>
-            Check the file path and make sure the JSON is valid.<br>
-            <code>fetch('Calgary_majorRoad.geojson')</code> <span style="color: darkred;">// typo: missing "s"</span>
-        </li>
-        <li>
-            <strong>Map not showing?</strong><br>
-            Ensure the container <code>&lt;div id="map"&gt;</code> exists and has height/width set in CSS.
-        </li>
-        <li>
-            <strong>JavaScript error?</strong><br>
-            Open DevTools (<kbd>F12</kbd> or right-click → <em>Inspect</em>), then check the <strong>Console</strong> tab for red error messages.
-        </li>
-        <li>
-            <strong>Use <code>console.log()</code> for debugging:</strong><br>
-            Log values to see what’s happening.<br>
-            <code>console.log(mapCenter);</code> <span style="color: gray;">// Should show [51.05, -114.07]</span>
-        </li>
-        </ul>
-        <p style="margin-top: 1em;">
-        📍 <em>Tip:</em> Use browser DevTools → <strong>Network</strong> tab to check if files loaded correctly.<br>
-        (Note: For local files, you must run a local server to see them here.)
-        </p>
-    </div>
-    </section>
-
-     <!-- Slide 11 -->
-    <section class="slide">
-    <div class="slide-title">Demo Recap</div>
-    <div class="slide-content" style="margin-left: 2rem;">
-        <ul>
-        <li>Created a Leaflet map centered on Calgary</li>
-        <li>Added a tile layer (Esri World Imagery)</li>
-        <li>Loaded GeoJSON of Calgary major roads</li>
-        <li>Bound tooltips to road names</li>
-        <li>Added a button to zoom to a sample feature</li>
-        <li>Used <code>console.log()</code> and browser DevTools for debugging</li>
-        </ul>
-    </div>
-    </section>
-     <!-- Slide 12 -->
-    <section class="slide">
-    <div class="slide-title">Organizing JavaScript for GIS Apps</div>
-    <div class="slide-content" style="margin-left: 2rem;">
-        <p>Why does code organization matter?</p>
-        <ul">
-        <li>Helps you understand and debug your app faster</li>
-        <li>Makes collaboration easier for team projects</li>
-        <li>Prepares you to scale your code into larger apps</li>
-        </ul>
-
-        <p>Common practices for clean structure:</p>
-        <ul>
-        <li>
-            <strong>Use meaningful and consistent naming:</strong><br>
-            e.g., <code>mapCenter</code>, <code>zoomBtn</code>, <code>sampleFeature</code> clearly reflect their purpose.
-        </li>
-        <li>
-            <strong>Group related logic into functions (and later, modules):</strong><br>
-            Create reusable chunks like <code>initMap()</code>, <code>loadGeoJSON()</code>, <code>bindEvents()</code>. These could later move into files like <code>map.js</code> or <code>data.js</code>.
-        </li>
-        <li>
-            <strong>Separate setup from execution:</strong><br>
-            Define all functions first, then call them at the end using <code>window.onload</code> or a <code>main()</code> function.<br>
-            <code>
-            window.onload = () => {<br>
-            &nbsp;&nbsp;initMap();<br>
-            &nbsp;&nbsp;loadGeoJSON();<br>
-            &nbsp;&nbsp;bindEvents();<br>
-            };
-            </code>
-        </li>
-        </ul>
-    </div>
-    </section>
-    <!-- Slide 13: Lecture Structure Image -->
-    <section class="slide">
-      <div class="slide-title"></div>
-      <div class="slide-content" style="margin-left: 2rem;">
-        <p>"geog-4105-sample-lecture.html" can be broken using the below structure:</p>
-        <div style="text-align:center; margin-top:1.5em;">
-        <img src="lecture_structure.jpg" alt="Lecture Structure Diagram" style="max-width:60%; border-radius:6px; box-shadow:0 2px 8px #e3eaf2;">
+      </section>
+      <!-- Slide 10 -->
+      <section class="slide">
+        <div class="slide-title">Debugging and Troubleshooting</div>
+        <div class="slide-content">
+          <ul>
+            <li>
+              <strong>GeoJSON not loading?</strong><br>
+              Check the file path and make sure the JSON is valid.<br>
+              <code>fetch('Calgary_majorRoad.geojson')</code> <span style="color: darkred;">// typo: missing "s"</span>
+            </li>
+            <li>
+              <strong>Map not showing?</strong><br>
+              Ensure the container <code>&lt;div id="map"&gt;</code> exists and has height/width set in CSS.
+            </li>
+            <li>
+              <strong>JavaScript error?</strong><br>
+              Open DevTools (<kbd>F12</kbd> or right-click → <em>Inspect</em>), then check the <strong>Console</strong> tab for red error messages.
+            </li>
+            <li>
+              <strong>Use <code>console.log()</code> for debugging:</strong><br>
+              Log values to see what’s happening.<br>
+              <code>console.log(mapCenter);</code> <span style="color: gray;">// Should show [51.05, -114.07]</span>
+            </li>
+          </ul>
+          <p>
+            📍 <em>Tip:</em> Use browser DevTools → <strong>Network</strong> tab to check if files loaded correctly.<br>
+            (Note: For local files, you must run a local server to see them here.)
+          </p>
         </div>
-      </div>
-    </section>
+      </section>
+      <!-- Slide 11 -->
+      <section class="slide">
+        <div class="slide-title">Demo Recap</div>
+        <div class="slide-content">
+          <ul>
+            <li>Created a Leaflet map centered on Calgary</li>
+            <li>Added a tile layer (Esri World Imagery)</li>
+            <li>Loaded GeoJSON of Calgary major roads</li>
+            <li>Bound tooltips to road names</li>
+            <li>Added a button to zoom to a sample feature</li>
+            <li>Used <code>console.log()</code> and browser DevTools for debugging</li>
+          </ul>
+        </div>
+      </section>
+      <!-- Slide 12 -->
+      <section class="slide">
+        <div class="slide-title">Organizing JavaScript for GIS Apps</div>
+        <div class="slide-content">
+          <p>Why does code organization matter?</p>
+          <ul>
+            <li>Helps you understand and debug your app faster</li>
+            <li>Makes collaboration easier for team projects</li>
+            <li>Prepares you to scale your code into larger apps</li>
+          </ul>
+          <p>Common practices for clean structure:</p>
+          <ul>
+            <li>
+              <strong>Use meaningful and consistent naming:</strong><br>
+              e.g., <code>mapCenter</code>, <code>zoomBtn</code>, <code>sampleFeature</code> clearly reflect their purpose.
+            </li>
+            <li>
+              <strong>Group related logic into functions (and later, modules):</strong><br>
+              Create reusable chunks like <code>initMap()</code>, <code>loadGeoJSON()</code>, <code>bindEvents()</code>. These could later move into files like <code>map.js</code> or <code>data.js</code>.
+            </li>
+            <li>
+              <strong>Separate setup from execution:</strong><br>
+              Define all functions first, then call them at the end using <code>window.onload</code> or a <code>main()</code> function.<br>
+              <span class="code-block">
+                window.onload = () => {<br>
+                &nbsp;&nbsp;initMap();<br>
+                &nbsp;&nbsp;loadGeoJSON();<br>
+                &nbsp;&nbsp;bindEvents();<br>
+                };
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <!-- Slide 13: Lecture Structure Image -->
+      <section class="slide">
+        <div class="slide-title"></div>
+        <div class="slide-content">
+          <p>"geog-4105-sample-lecture.html" can be broken using the below structure:</p>
+          <div style="text-align:center; margin-top:1.5em;">
+            <img src="lecture_structure.jpg" alt="Lecture Structure Diagram" style="max-width:60%;">
+          </div>
+        </div>
+      </section>
       <!-- Slide 14 -->
       <section class="slide">
         <div class="slide-title">Where This Fits in the Course</div>
-        <div class="slide-content" style="margin-left: 2rem;">
-            <ul>
+        <div class="slide-content">
+          <ul>
             <li>This week sets up core map and data logic</li>
             <li><strong>Next week:</strong> Advanced interactivity, filters, custom controls</li>
             <li><strong>Weeks 5–6:</strong> Styling, basemaps, legends, layout</li>
             <li><strong>Final project:</strong> Build your own web mapping app from scratch</li>
-            </ul>
-            <p style="margin-top:1em;">🔧 <em>You now have the essential tools to begin real geospatial interface development.</em></p>
+          </ul>
+          <p>🔧 <em>You now have the essential tools to begin real geospatial interface development.</em></p>
         </div>
-        </section>
+      </section>
       <!-- Slide 15 -->
       <section class="slide" style="position:relative;">
         <div class="slide-title">Summary & Key Takeaways</div>
-        <div class="slide-content" style="margin-left: 2rem;">
-            <ul>
+        <div class="slide-content">
+          <ul>
             <li>JavaScript powers interactivity in web GIS</li>
             <li>Leaflet.js simplifies map creation and data rendering</li>
             <li>GeoJSON is a browser-friendly vector data format</li>
             <li>Events and styling connect users to spatial data</li>
             <li>Good structure and debugging habits make life easier</li>
-            </ul>
-            <p style="margin-top:1em;">🌐 <em>Practice: Start small, then iterate. Web GIS is built step by step.</em></p>
-            <img src="q1-qr.svg" alt="QR code" style="position:absolute; right:5em; bottom:-10em; width:150px; height:150px; box-shadow:0 2px 8px #e3eaf2; border-radius:8px;">
-            <a href="https://forms.gle/hcFSVGxQ7fZWV5TV9" target="_blank" style="position:absolute; right:5em; bottom:-12.5em; font-size:1em; color:#204060; text-decoration:underline;">
-              https://forms.gle/hcFSVGxQ7fZWV5TV9
-            </a>
+          </ul>
+          <p>🌐 <em>Practice: Start small, then iterate. Web GIS is built step by step.</em></p>
+          <img src="q1-qr.svg" alt="QR code" style="position:absolute; right:5em; bottom:-10em; width:150px; height:150px;">
+          <a href="https://forms.gle/hcFSVGxQ7fZWV5TV9" target="_blank" style="position:absolute; right:5em; bottom:-12.5em; font-size:1em; color:#204060; text-decoration:underline;">
+            https://forms.gle/hcFSVGxQ7fZWV5TV9
+          </a>
         </div>
       </section>
       <!-- Slide 16 -->
       <section class="slide">
         <div class="slide-title">Questions? + Resources</div>
-        <div class="slide-content" style="margin-left: 2rem;">
-            <ul>
+        <div class="slide-content">
+          <ul>
             <li>What parts of the JavaScript/Leaflet workflow still feel unclear?</li>
             <li>Anything you'd like to see broken down again?</li>
-            </ul>
-            <p style="margin-top:1.5em;">📂 GitHub Demo Repo: <code>https://github.com/lannguyen-wp/geog4105-demo</code><br>
-            📘 Docs: <a href="https://leafletjs.com">leafletjs.com</a> | <a href="https://developer.mozilla.org">MDN JavaScript</a></p>
-        </div>
-        </section>
+          </ul>
+            <p style="margin-top:1.5em;">
+            📂 GitHub Demo Repo: 
+            <a href="https://github.com/lannguyen-wp/geog4105-demo" target="_blank">
+              https://github.com/lannguyen-wp/geog4105-demo
+            </a><br>
+            📘 Docs: 
+            <a href="https://leafletjs.com" target="_blank">leafletjs.com</a> | 
+            <a href="https://developer.mozilla.org" target="_blank">MDN JavaScript</a>
+            </p>
+          </div>
+      </section>
       <!-- Navigation Bar -->
       <div class="nav-bar">
         <div style="display: flex; gap: 0.5em;">
